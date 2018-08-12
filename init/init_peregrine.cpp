@@ -53,6 +53,12 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 void vendor_load_properties()
 {
     std::string platform = GetProperty("ro.board.platform", "");
@@ -64,33 +70,33 @@ void vendor_load_properties()
     if (radio == "0x1") {
         /* xt1045*/
         gsm_properties();
-        property_override("ro.product.device", "peregrine");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "peregrine");
         property_override("ro.product.model", "XT1045");
         property_override("ro.product.display", "Moto G");
         property_override("ro.build.description", "peregrine_retus-user 5.1 LPB23.13-37 37 release-keys");
-        property_override("ro.build.fingerprint", "motorola/peregrine_retus/peregrine:5.1/LPB23.13-37/37:user/release-keys");
+        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "motorola/peregrine_retus/peregrine:5.1/LPB23.13-37/37:user/release-keys");
         property_set("ro.mot.build.customerid", "retus");
         property_set("persist.radio.multisim.config", "");
 
     } else if (radio == "0x3") {
         /* xt1039 */
         gsm_properties();
-        property_override("ro.product.device", "peregrine");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "peregrine");
         property_override("ro.product.model", "XT1039");
         property_override("ro.product.display", "Moto G");
         property_override("ro.build.description", "peregrine_reteu-user 5.1 LPB23.13-17 18 release-keys");
-        property_override("ro.build.fingerprint", "motorola/peregrine_reteu/peregrine:5.1/LPB23.13-17/18:user/release-keys");
+        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "motorola/peregrine_reteu/peregrine:5.1/LPB23.13-17/18:user/release-keys");
         property_set("ro.mot.build.customerid", "reteu");
         property_set("persist.radio.multisim.config", "");
 
     } else if (radio == "0x5") {
         /*xt1042 */
         cdma_properties("0");
-        property_override("ro.product.device", "peregrine");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "peregrine");
         property_override("ro.product.model", "XT1042");
         property_override("ro.product.display", "Moto G");
         property_override("ro.build.description", "peregrine_usc-user 4.4.4 KXB21.14-L1.41 41 release-keys");
-        property_override("ro.build.fingerprint", "motorola/peregrine_usc/peregrine:4.4.4/KXB21.14-L1.41/41:user/release-keys");
+        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "motorola/peregrine_usc/peregrine:4.4.4/KXB21.14-L1.41/41:user/release-keys");
         property_set("persist.radio.multisim.config", "");
         property_set("ro.mot.build.customerid ","usc");
         property_set("ro.com.android.dataroaming","true");
@@ -111,11 +117,11 @@ void vendor_load_properties()
      } else if (radio == "0x7") {
         /* xt1040 */
         gsm_properties();
-        property_override("ro.product.device", "peregrine");
+        property_override_dual("ro.product.device", "ro.vendor.product.device", "peregrine");
         property_override("ro.product.model", "XT1040");
         property_override("ro.product.display", "Moto G");
         property_override("ro.build.description", "peregrine_retbr-user 5.1 LPB23.13-8 7 release-keys");
-        property_override("ro.build.fingerprint", "motorola/peregrine_retbr/peregrine:5.1/LPB23.13-8/7:user/release-keys");
+        property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "motorola/peregrine_retbr/peregrine:5.1/LPB23.13-8/7:user/release-keys");
         property_set("ro.mot.build.customerid", "reteuall");
         property_set("persist.radio.multisim.config", "");
     }
