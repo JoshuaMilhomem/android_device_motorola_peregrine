@@ -6,6 +6,9 @@ $(call inherit-product, vendor/aosp/common.mk)
 TARGET_BOOT_ANIMATION_RES := 720
 EXTENDED_BUILD_TYPE := OFFICIAL
 
+# Use Gcam 
+TARGET_USE_GCAM := true
+
 PRODUCT_RELEASE_NAME := peregrine
 PRODUCT_NAME := aosp_peregrine
 
