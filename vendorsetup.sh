@@ -1,1 +1,1 @@
-add_lunch_combo lineage_peregrine-userdebug
+add_lunch_combo viper_peregrine-userdebug
